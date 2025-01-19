@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>アイドルランダムセレクター</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #f9f9f9;
+            color: #333;
+        }
+        h1 {
+            color: #ff69b4;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            margin: 20px;
+            border: none;
+            border-radius: 5px;
+            background-color: #ff69b4;
+            color: white;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #ff85c1;
+        }
+        .idol-list {
+            margin-top: 20px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px;
+        }
+        .idol {
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            background-color: #fff;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+<body>
+    <h1>アイドルランダムセレクター</h1>
+    <p>ボタンをクリックして7人のアイドルをランダムに選びましょう！</p>
+    <button onclick="selectRandomIdols()">ランダムで選ぶ</button>
+    <div class="idol-list" id="idolList"></div>
+
+    <script>
+        const idols = [
+            "月足天音", "鎮西寿々歌", "櫻井優衣", "仲川瑠夏", "真中まな",
+            "松本かれん", "早瀬ノエル", "福山梨乃", "桐原美月", "南なつ",
+            "小川奈々子", "立花琴未", "宮野静", "村川緋杏", "奥田彩友",
+            "音井結衣", "栗田なつか", "塩川莉世", "庄司なぎさ", "白石まゆみ",
+            "山内咲奈", "古澤里紗", "佐野愛花", "板倉可奈", "増田彩乃",
+            "川本笑瑠", "梅田みゆ", "真鍋凪咲", "桜庭遥花", "阿部かれん"
+        ];
+
+
+        function selectRandomIdols() {
+            const shuffled = idols.sort(() => 0.5 - Math.random());
+            const selected = shuffled.slice(0, 7);
+
+            const idolList = document.getElementById("idolList");
+            idolList.innerHTML = ""; // リセット
+
+            selected.forEach(idol => {
+                const div = document.createElement("div");
+                div.className = "idol";
+                div.textContent = idol;
+                idolList.appendChild(div);
+            });
+        }
+    </script>
+</body>
+</html>
